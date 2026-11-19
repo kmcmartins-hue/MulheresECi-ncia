@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pesquisa de percepção | Chamada nº 31/2023</title>
+<style>
+:root{
+  --navy:#17324d;--blue:#285b83;--teal:#397d79;--ink:#243342;
+  --muted:#667584;--line:#dce4ea;--bg:#f3f6f8;--white:#fff;
+  --soft:#eaf1f5;--focus:#80b7d9;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:var(--navy);color:#fff;padding:34px 20px 30px}
+.head{max-width:900px;margin:auto}
+.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.75rem;font-weight:700;color:#c8d9e5}
+h1{font-size:clamp(1.6rem,4vw,2.35rem);line-height:1.15;margin:10px 0}
+header p{max-width:720px;margin:10px 0 0;color:#e3edf3}
+main{max-width:900px;margin:26px auto;padding:0 16px 48px}
+.progress-wrap{display:flex;align-items:center;gap:14px;margin:0 0 18px;color:var(--muted);font-size:.9rem}
+.progress{height:7px;background:#e0e7ec;border-radius:99px;overflow:hidden;flex:1}
+.progress span{display:block;height:100%;width:0;background:var(--teal);transition:width .2s}
+.card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:24px;margin:0 0 16px;box-shadow:0 3px 12px rgba(22,48,70,.035)}
+h2{font-size:1.2rem;color:var(--navy);margin:0 0 5px}
+.intro{color:var(--muted);margin:0 0 18px;font-size:.94rem}
+.field{padding:16px 0;border-top:1px solid #edf1f4}
+.field:first-of-type{border-top:0}
+.field label.q{display:block;font-weight:650;margin-bottom:10px}
+.required{color:#a23b3b}
+.hint{display:block;color:var(--muted);font-size:.86rem;margin-top:6px}
+input[type=text],select,textarea{width:100%;border:1px solid #cbd6de;border-radius:8px;padding:11px 12px;font:inherit;color:var(--ink);background:#fff}
+textarea{min-height:86px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:3px solid #d8eaf5;border-color:var(--focus)}
+.options{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px}
+.option{display:flex;align-items:flex-start;gap:9px;padding:10px 11px;border:1px solid var(--line);border-radius:8px;cursor:pointer;font-size:.94rem;background:#fff}
+.option:hover{background:#f7fafb;border-color:#b7c8d3}
+.option input{margin-top:4px;accent-color:var(--teal);flex:0 0 auto}
+.scale{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px}
+.scale .option{justify-content:center;text-align:center;padding:10px 5px;flex-direction:column;align-items:center;gap:5px}
+.scale .option input{margin:0}
+.scale small{font-size:.75rem;color:var(--muted)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;margin-top:20px}
+button{border:0;border-radius:9px;padding:12px 18px;font:600 1rem system-ui;cursor:pointer}
+.primary{background:var(--navy);color:#fff}
+.secondary{background:#e5edf2;color:var(--navy)}
+button:hover{filter:brightness(.96)}
+.note{background:#f0f5f7;border-left:4px solid var(--teal);padding:13px 15px;border-radius:6px;color:#425563;font-size:.9rem}
+.hidden{display:none!important}
+.error{color:#a23b3b;font-size:.88rem;margin-top:8px}
+.success{background:#edf6f2;border:1px solid #c7e2d5;padding:18px;border-radius:10px}
+footer{text-align:center;color:var(--muted);font-size:.82rem;padding:8px 0 24px}
+@media(max-width:600px){.card{padding:18px}.scale{grid-template-columns:repeat(3,minmax(0,1fr))}.actions button{width:100%}}
+@media print{body{background:#fff}.actions, .progress-wrap{display:none}.card{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<header><div class="head">
+  <div class="eyebrow">CNPq · Avaliação de resultados</div>
+  <h1>Pesquisa de percepção sobre a Chamada nº 31/2023</h1>
+  <p>Meninas nas Ciências Exatas, Engenharias e Computação</p>
+  <p>Queremos conhecer sua percepção sobre a implementação da chamada e as contribuições das ações. O preenchimento leva aproximadamente 3 a 5 minutos. Não há respostas certas ou erradas.</p>
+</div></header>
+<main>
+  <div class="progress-wrap"><span id="progressText">Identificação</span><div class="progress"><span id="progressBar"></span></div><span id="progressPct">0%</span></div>
+  <form id="survey" novalidate>
+    <section class="card">
+      <h2>1. Identificação</h2>
+      <p class="intro">Estas perguntas são comuns a todas as pessoas participantes.</p>
+      <div class="field">
+        <label class="q" for="role">1. Qual é a sua relação com o projeto? <span class="required">*</span></label>
+        <select id="role" name="relação_com_projeto" required>
+          <option value="">Selecione uma opção</option>
+          <option value="Coordenação do projeto">Coordenador(a) do projeto</option>
+          <option value="Equipe de pesquisa">Pesquisador(a) da equipe</option>
+          <option value="Professor(a) da educação básica">Professor(a) da educação básica</option>
+          <option value="Bolsista ICJ">Bolsista ICJ</option>
+          <option value="Bolsista IC">Bolsista IC</option>
+          <option value="Bolsista AT-NS">Bolsista AT-NS</option>
+          <option value="Bolsista ADC">Bolsista ADC</option>
+          <option value="Bolsista PDJ">Bolsista PDJ</option>
+          <option value="Estudante sem bolsa">Estudante participante sem bolsa</option>
+          <option value="Instituição parceira">Representante de instituição parceira</option>
+          <option value="Outro">Outro</option>
+        </select>
+        <span class="hint">Se você tiver mais de um vínculo, selecione aquele que melhor representa sua participação no projeto. Bolsistas AT-NS devem selecionar essa modalidade.</span>
+      </div>
+      <div class="field">
+        <label class="q" for="project">2. De qual projeto você participa? <span class="required">*</span></label>
+        <input type="text" id="project" name="projeto" list="projectList" placeholder="Digite o nome ou número do projeto" required>
+        <datalist id="projectList"></datalist>
+        <span class="hint">A lista com os nomes oficiais dos 122 projetos pode ser inserida nesta versão antes da aplicação.</span>
+      </div>
+    </section>
+
+    <section class="card hidden" id="groupBlock">
+      <h2 id="groupTitle">2. Sua percepção sobre o projeto</h2>
+      <p class="intro" id="groupIntro">Responda às perguntas correspondentes à sua participação.</p>
+      <div id="questions"></div>
+    </section>
+
+    <section class="card hidden" id="closing">
+      <h2>3. Acompanhamento e autorização</h2>
+      <p class="intro">As perguntas abaixo são opcionais e não interferem nas respostas anteriores.</p>
+      <div class="field">
+        <label class="q">Você aceitaria ser contatado(a) futuramente pelo CNPq para participar de uma nova etapa de acompanhamento ou avaliação do projeto?</label>
+        <div class="options">
+          <label class="option"><input type="radio" name="contato_futuro" value="Sim"> Sim</label>
+          <label class="option"><input type="radio" name="contato_futuro" value="Não"> Não</label>
+        </div>
+      </div>
+      <div class="field">
+        <label class="q">Você autoriza o CNPq a utilizar eventuais depoimentos fornecidos por você em materiais institucionais sobre a chamada?</label>
+        <div class="options">
+          <label class="option"><input type="radio" name="uso_depoimento" value="Sim, com identificação"> Sim, com identificação</label>
+          <label class="option"><input type="radio" name="uso_depoimento" value="Sim, sem identificação"> Sim, sem identificação</label>
+          <label class="option"><input type="radio" name="uso_depoimento" value="Não autorizo"> Não autorizo</label>
+        </div>
+        <span class="hint">A autorização para uso de depoimento deve ser tratada separadamente do consentimento para participação na pesquisa. Para menores de idade, observar os procedimentos de assentimento e autorização dos responsáveis.</span>
+      </div>
+      <div class="note">Antes da aplicação oficial, inclua o texto institucional de apresentação, as informações sobre tratamento dos dados, privacidade, voluntariedade e contato responsável pela pesquisa, conforme as orientações do CNPq.</div>
+    </section>
+
+    <div id="error" class="error" role="alert"></div>
+    <div class="actions">
+      <button type="button" class="secondary" id="back">Voltar</button>
+      <button type="button" class="primary" id="next">Continuar</button>
+      <button type="submit" class="primary hidden" id="finish">Finalizar respostas</button>
+    </div>
+  </form>
+  <section class="card hidden" id="done">
+    <div class="success">
+      <h2>Respostas registradas nesta página!</h2>
+      <p>Esta versão demonstrativa não envia os dados automaticamente ao CNPq nem a um servidor. Você pode baixar as respostas em JSON para teste e validação.</p>
+      <button type="button" class="primary" id="download">Baixar respostas (.json)</button>
+      <button type="button" class="secondary" onclick="location.reload()">Preencher novamente</button>
+    </div>
+  </section>
+  <footer>Formulário demonstrativo · Chamada nº 31/2023</footer>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const contribution = ["Não contribuiu","Contribuiu pouco","Contribuiu moderadamente","Contribuiu bastante","Contribuiu muito","Não sei avaliar"];
+const extent = ["Não ampliou","Ampliou pouco","Ampliou moderadamente","Ampliou bastante","Ampliou muito","Não sei avaliar"];
+const proximity = ["Não aproximou","Aproximou pouco","Aproximou moderadamente","Aproximou bastante","Aproximou muito","Não sei avaliar"];
+const increase = ["Diminuiu muito","Diminuiu um pouco","Continuou igual","Aumentou um pouco","Aumentou muito","Não sei avaliar"];
+const yesHelp = ["Não ajudou","Ajudou pouco","Ajudou mais ou menos","Ajudou bastante","Ajudou muito"];
+const questionsByRole = {
+  "Coordenação do projeto": {
+    title:"Coordenação e equipe de pesquisa",
+    qs:[
+      {q:"3. Na sua percepção, em que medida o projeto está contribuindo para estimular o interesse e ampliar a participação de meninas e mulheres nas áreas de Ciências Exatas, Engenharias e Computação?",o:contribution},
+      {q:"4. Em que medida o projeto contribui para reduzir desigualdades de gênero e étnico-raciais nessas áreas?",o:contribution},
+      {q:"5. Como você avalia a contribuição do financiamento do CNPq para a realização das ações propostas?",o:["Muito insuficiente","Insuficiente","Adequada","Mais que adequada","Fundamental para a realização do projeto","Não sei avaliar"]},
+      {q:"6. Quais são os principais desafios enfrentados na implementação do projeto?",m:["Gestão e execução dos recursos financeiros","Disponibilidade ou implementação das bolsas","Mobilização e engajamento das participantes","Articulação com escolas e instituições parceiras","Infraestrutura e equipamentos","Transporte e acesso das participantes","Disponibilidade de profissionais na equipe","Questões administrativas e institucionais","Continuidade das ações após o encerramento do projeto","Outros"],max:3},
+      {q:"7. Na sua avaliação, qual é a principal contribuição ou legado que o projeto poderá deixar?",open:true}
+    ]},
+  "Equipe de pesquisa": {same:"Coordenação do projeto"},
+  "Professor(a) da educação básica": {
+    title:"Professores(as) da educação básica",
+    qs:[
+      {q:"3. Em que medida sua participação no projeto contribuiu para sua formação e atuação como educador(a) na promoção da ciência e tecnologia?",o:contribution},
+      {q:"4. Na sua percepção, como a participação no projeto influenciou o interesse das meninas por ciência e tecnologia?",o:increase},
+      {q:"5. Em que medida o projeto aproximou sua escola de universidades e instituições de pesquisa?",o:proximity},
+      {q:"6. Qual é a principal contribuição que o projeto poderá deixar para a escola e suas estudantes?",open:true}
+    ]},
+  "Bolsista AT-NS": {
+    title:"Bolsistas AT-NS",
+    qs:[
+      {q:"3. Em que medida o projeto contribuiu para sua formação e desenvolvimento profissional?",o:contribution},
+      {q:"4. Em que medida o projeto ampliou sua capacidade de incentivar meninas a conhecer e considerar carreiras científicas e tecnológicas?",o:extent},
+      {q:"5. O projeto fortaleceu sua relação com universidades e instituições de pesquisa?",o:["Não fortaleceu","Fortaleceu pouco","Fortaleceu moderadamente","Fortaleceu bastante","Fortaleceu muito","Não sei avaliar"]},
+      {q:"6. Qual é a principal contribuição que o projeto poderá deixar para a educação científica das meninas?",open:true}
+    ]},
+  "Bolsista ICJ": {title:"Bolsistas ICJ",student:true},
+  "Estudante sem bolsa": {title:"Estudantes participantes sem bolsa",student:true},
+  "Bolsista IC": {
+    title:"Bolsistas IC (graduação)",
+    qs:[
+      {q:"3. Em que medida o projeto contribuiu para sua formação científica e tecnológica?",o:contribution},
+      {q:"4. Em que medida a experiência ampliou suas perspectivas de continuidade nas áreas de Ciências Exatas, Engenharias e Computação?",o:extent},
+      {q:"5. Quais oportunidades a participação no projeto proporcionou a você?",m:["Participação em atividades de pesquisa","Aprendizagem de novas técnicas e ferramentas","Desenvolvimento de habilidades científicas e tecnológicas","Participação em eventos científicos","Contato com pesquisadores e grupos de pesquisa","Ampliação da rede de contatos acadêmicos","Maior interesse pela pós-graduação","Maior interesse pela carreira científica","Nenhuma das alternativas","Outra"]},
+      {q:"6. Qual é a principal contribuição ou legado que o projeto poderá deixar para outras estudantes?",open:true}
+    ]},
+  "Bolsista ADC": {
+    title:"Bolsistas ADC",
+    qs:[
+      {q:"3. Em que medida o projeto contribuiu para desenvolver suas habilidades de divulgação científica?",o:contribution},
+      {q:"4. Quais habilidades você desenvolveu ou aprimorou durante sua participação?",m:["Comunicação oral e escrita","Produção de conteúdo para mídias digitais","Produção audiovisual","Organização de eventos e atividades de divulgação","Tradução de conteúdos científicos para linguagem acessível","Interação com diferentes públicos","Uso de ferramentas digitais","Trabalho em equipe","Não percebi desenvolvimento nessas habilidades","Outras"]},
+      {q:"5. Na sua percepção, as estratégias de divulgação do projeto aproximaram diferentes públicos da ciência e tecnologia?",o:["Não aproximaram","Aproximaram pouco","Aproximaram moderadamente","Aproximaram bastante","Aproximaram muito","Não sei avaliar"]},
+      {q:"6. Qual é a principal contribuição ou legado que o projeto poderá deixar para a divulgação científica?",open:true}
+    ]},
+  "Bolsista PDJ": {
+    title:"Bolsistas PDJ",
+    qs:[
+      {q:"3. Em que medida o projeto contribuiu para sua consolidação e desenvolvimento como pesquisadora?",o:contribution},
+      {q:"4. Em que medida a experiência ampliou sua autonomia e suas oportunidades de atuação científica?",o:extent},
+      {q:"5. Quais oportunidades foram fortalecidas pela participação no projeto?",m:["Desenvolvimento de novas pesquisas","Ampliação de redes de colaboração","Formação de estudantes","Participação em eventos científicos","Publicações e produção científica","Novas parcerias institucionais","Continuidade na carreira acadêmica","Inserção em outros espaços profissionais","Nenhuma das alternativas","Outras"]},
+      {q:"6. Qual é a principal contribuição ou legado que o projeto poderá deixar para a participação das mulheres na ciência?",open:true}
+    ]},
+  "Instituição parceira": {
+    title:"Representantes de instituições parceiras",
+    qs:[
+      {q:"3. A participação no projeto fortaleceu a relação da sua instituição com escolas, universidades ou instituições de pesquisa?",o:["Não fortaleceu","Fortaleceu pouco","Fortaleceu moderadamente","Fortaleceu bastante","Fortaleceu muito","Não sei avaliar"]},
+      {q:"4. A parceria gerou novas oportunidades de cooperação entre as instituições?",o:["Sim, várias","Sim, algumas","Não","Ainda não, mas há perspectivas","Não sei avaliar"]},
+      {q:"5. Sua instituição pretende dar continuidade a alguma iniciativa desenvolvida no âmbito do projeto?",o:["Sim","Talvez","Não","Ainda não há decisão"]},
+      {q:"6. Qual é a principal contribuição ou legado que essa parceria poderá deixar?",open:true}
+    ]},
+  "Outro": {title:"Outros participantes",qs:[
+    {q:"3. Em que medida sua participação contribuiu para aproximá-lo(a) das atividades de ciência e tecnologia desenvolvidas pelo projeto?",o:contribution},
+    {q:"4. Qual é a principal contribuição ou legado que o projeto poderá deixar?",open:true}
+  ]}
+};
+questionsByRole["Equipe de pesquisa"] = questionsByRole["Coordenação do projeto"];
+questionsByRole["Bolsista ICJ"].qs = [
+ {q:"3. Depois de participar do projeto, seu interesse por ciência e tecnologia:",o:increase},
+ {q:"4. O projeto ajudou você a conhecer novas profissões e possibilidades de estudo nas áreas de ciência, tecnologia e engenharia?",o:yesHelp},
+ {q:"5. Depois dessa experiência, você passou a considerar estudar ou trabalhar em alguma dessas áreas?",o:["Sim, com certeza","Sim, talvez","Ainda tenho dúvidas","Não","Já considerava antes de participar"]},
+ {q:"6. Você se sente mais confiante para realizar atividades de ciência e tecnologia, como experimentos, pesquisas, programação ou construção de projetos?",o:["Muito menos confiante","Um pouco menos confiante","Tão confiante quanto antes","Um pouco mais confiante","Muito mais confiante"]},
+ {q:"7. O que você considera mais importante que o projeto poderá deixar para outras meninas?",open:true}
+];
+questionsByRole["Estudante sem bolsa"].qs = questionsByRole["Bolsista ICJ"].qs;
+let step=0, answers={};
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function renderQuestions(){
+ const role=$("role").value, cfg=questionsByRole[role];
+ if(!cfg){$("groupBlock").classList.add("hidden");return;}
+ $("groupTitle").textContent="2. "+cfg.title;
+ $("questions").innerHTML="";
+ cfg.qs.forEach((item,i)=>{
+  const name="q"+(i+1), div=document.createElement("div");div.className="field";
+  let body="";
+  if(item.o){
+   body='<div class="options '+(item.o.length>=5?'scale':'')+'">'+item.o.map((v,j)=>`<label class="option"><input type="radio" name="${name}" value="${esc(v)}" required> <span>${esc(v)}</span></label>`).join("")+'</div>';
+  }else if(item.m){
+   body='<div class="options">'+item.m.map(v=>`<label class="option"><input type="checkbox" name="${name}" value="${esc(v)}"> <span>${esc(v)}</span></label>`).join("")+'</div><span class="hint">'+(item.max?`Selecione até ${item.max} opções.`:"Selecione todas as opções aplicáveis.")+'</span>';
+  }else if(item.open){
+   body=`<textarea name="${name}" maxlength="250" placeholder="Escreva sua resposta (até 250 caracteres)" required></textarea><span class="hint"><span class="count">0</span>/250 caracteres</span>`;
+  }
+  div.innerHTML=`<label class="q">${esc(item.q)} <span class="required">*</span></label>${body}`;
+  $("questions").appendChild(div);
+ });
+ $("questions").querySelectorAll("textarea").forEach(t=>t.addEventListener("input",()=>t.parentElement.querySelector(".count").textContent=t.value.length));
+ $("groupBlock").classList.remove("hidden");
+}
+function update(){
+ $("back").classList.toggle("hidden",step===0);
+ $("next").classList.toggle("hidden",step===2);
+ $("finish").classList.toggle("hidden",step!==2);
+ $("closing").classList.toggle("hidden",step!==2);
+ $("groupBlock").classList.toggle("hidden",step!==1 || !questionsByRole[$("role").value]);
+ $("progressText").textContent=["Identificação","Perguntas específicas","Encerramento"][step];
+ $("progressBar").style.width=[33,66,100][step]+"%";
+ $("progressPct").textContent=[33,66,100][step]+"%";
+ $("error").textContent="";
+}
+function validateStep(){
+ if(step===0){
+  if(!$("role").value||!$("project").value.trim())return "Preencha sua relação com o projeto e identifique o projeto.";
+ }
+ if(step===1){
+  const cfg=questionsByRole[$("role").value]; if(!cfg)return "Selecione sua relação com o projeto.";
+  for(let i=0;i<cfg.qs.length;i++){
+   const n="q"+(i+1), q=cfg.qs[i];
+   if(q.open && !document.querySelector(`[name="${n}"]`).value.trim())return "Responda à pergunta aberta.";
+   if(q.o && !document.querySelector(`[name="${n}"]:checked`))return "Responda a todas as perguntas desta etapa.";
+   if(q.m){
+    const checked=[...document.querySelectorAll(`[name="${n}"]:checked`)];
+    if(!checked.length)return "Selecione ao menos uma alternativa em cada pergunta de seleção múltipla.";
+    if(q.max && checked.length>q.max)return `Na pergunta ${i+3}, selecione no máximo ${q.max} opções.`;
+    if(checked.some(x=>x.value==="Nenhuma das alternativas")&&checked.length>1)return "“Nenhuma das alternativas” não pode ser selecionada junto com outras opções.";
+   }
+  }
+ }
+ return "";
+}
+$("role").addEventListener("change",()=>{renderQuestions();});
+$("next").addEventListener("click",()=>{
+ const e=validateStep();if(e){$("error").textContent=e;return;}
+ if(step===0){step=1;renderQuestions();}else if(step===1){step=2;}
+ update();window.scrollTo({top:0,behavior:"smooth"});
+});
+$("back").addEventListener("click",()=>{if(step>0){step--;update();window.scrollTo({top:0,behavior:"smooth"});}});
+$("survey").addEventListener("submit",e=>{
+ e.preventDefault();const err=validateStep();if(err){$("error").textContent=err;return;}
+ const data={identificação:{relação:$("role").value,projeto:$("project").value.trim()},respostas:{},acompanhamento:{}};
+ const cfg=questionsByRole[$("role").value];
+ cfg.qs.forEach((q,i)=>{
+  const n="q"+(i+1);
+  data.respostas[q.q]=q.open?document.querySelector(`[name="${n}"]`).value.trim():
+   q.o?document.querySelector(`[name="${n}"]:checked`).value:
+   [...document.querySelectorAll(`[name="${n}"]:checked`)].map(x=>x.value);
+ });
+ ["contato_futuro","uso_depoimento"].forEach(n=>{const el=document.querySelector(`[name="${n}"]:checked`);data.acompanhamento[n]=el?el.value:"Não informado";});
+ answers=data;
+ $("survey").classList.add("hidden");$("done").classList.remove("hidden");$("progressText").textContent="Concluído";window.scrollTo({top:0,behavior:"smooth"});
+});
+$("download").addEventListener("click",()=>{
+ const blob=new Blob([JSON.stringify(answers,null,2)],{type:"application/json"});
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="respostas_chamada_31_2023.json";a.click();URL.revokeObjectURL(a.href);
+});
+update();
+</script>
+</body></html>
